@@ -1,0 +1,5 @@
+../Src/alarm.c:42:6:Init_Alarm	8	static
+../Src/alarm.c:88:6:Task_Alarm	16	static
+../Src/alarm.c:179:6:CallbackMotionDetect	4	static
+../Src/alarm.c:184:6:CallbackButtonPress	8	static
+../Src/alarm.c:191:6:CallbackButtonRelease	8	static
