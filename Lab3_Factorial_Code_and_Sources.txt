@@ -1,0 +1,71 @@
+CEG3136 Lab 3 — Factorial Assembly Routine (maths.s) + Header (maths.h)
+
+Files to add to your STM32CubeIDE project:
+- Src/maths.s
+- Inc/maths.h
+
+----------------------------------------
+Src/maths.s  (GNU/GCC / arm-none-eabi, Cortex-M33, Thumb)
+----------------------------------------
+    .syntax unified
+    .cpu cortex-m33
+    .thumb
+    .section .text
+    .global asm_factorial
+    .type   asm_factorial, %function
+
+/* uint32_t asm_factorial(uint32_t n)
+ * Argument: r0 = n (>= 0)
+ * Returns : r0 = n!
+ * Iterative; leaf function (no stack use), AAPCS compliant.
+ * Handles 0! = 1 and 1! = 1
+ */
+asm_factorial:
+    movs    r1, #1          @ result = 1
+    cmp     r0, #1          @ if (n <= 1) return 1
+    bls     1f
+
+0:  mul     r1, r1, r0      @ result *= n
+    subs    r0, r0, #1      @ n--
+    bhi     0b              @ while (n > 1)
+
+1:  mov     r0, r1          @ return result
+    bx      lr
+
+    .size   asm_factorial, .-asm_factorial
+
+----------------------------------------
+Inc/maths.h
+----------------------------------------
+#ifndef MATHS_H
+#define MATHS_H
+
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+uint32_t asm_factorial(uint32_t n);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MATHS_H */
+
+----------------------------------------
+Notes
+----------------------------------------
+- Uses only r0 and r1; preserves callee-saved registers (AAPCS).
+- 32-bit overflow occurs after 12! (keep inputs small or add checks in the UI).
+
+----------------------------------------
+Sources (from your uploaded lab PDFs) - Chatgpt
+----------------------------------------
+1) CEG3136-25F-LAB-3.pdf — Operation List: Factorial requirement ("3. Factorial ... 0! = 1 ... choose recursive or iterative").
+2) CEG3136-25F-LAB-3.pdf — Deliverables: include the entire files calc.c and maths.s in the report.
+3) CEG3136-25F-LAB-3.pdf — Test Application: add a source file named maths.s under Src (mini-template shown).
+
+(For exact passages, see Lab 3 PDF pages around: Operation List p.9, Deliverables p.10, and the Test Application section showing maths.s.)
+
