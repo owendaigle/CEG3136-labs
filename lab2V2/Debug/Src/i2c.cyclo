@@ -1,3 +1,0 @@
-../Src/i2c.c:20:6:I2C_Enable	6
-../Src/i2c.c:46:6:I2C_Request	2
-../Src/i2c.c:56:6:ServiceI2CRequests	6

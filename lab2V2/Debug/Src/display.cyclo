@@ -1,4 +1,0 @@
-../Src/display.c:53:6:DisplayEnable	1
-../Src/display.c:58:6:DisplayPrint	2
-../Src/display.c:90:6:DisplayColor	1
-../Src/display.c:101:6:UpdateDisplay	6

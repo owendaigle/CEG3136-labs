@@ -1,5 +1,0 @@
-../Src/alarm.c:42:6:Init_Alarm	1
-../Src/alarm.c:88:6:Task_Alarm	20
-../Src/alarm.c:179:6:CallbackMotionDetect	1
-../Src/alarm.c:184:6:CallbackButtonPress	1
-../Src/alarm.c:191:6:CallbackButtonRelease	2
